@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>章节自测 · 材料科学基础</title>
+<meta name="description" content="材料科学基础第 00–03 章 50 道单选题，概念辨析为主，含少量近似选项计算题；提交后自动批改并给出解析。">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/quiz.css">
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']] },
+  options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'] }
+};
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body class="quiz-body">
+<header class="topbar quiz-topbar">
+  <a class="brand" href="index.html" aria-label="材料科学基础 课件放映室">
+    <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M24 5 42 14.5v19L24 43 6 33.5v-19L24 5Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M6 14.5 24 24l18-9.5M24 24v19" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".55"/>
+      <circle cx="24" cy="24" r="2.6" fill="currentColor"/>
+      <circle cx="6" cy="14.5" r="2" fill="currentColor" opacity=".8"/>
+      <circle cx="42" cy="14.5" r="2" fill="currentColor" opacity=".8"/>
+      <circle cx="24" cy="43" r="2" fill="currentColor" opacity=".8"/>
+    </svg>
+    <span class="brand-text"><b>材料科学基础</b><i>章节自测</i></span>
+  </a>
+  <nav class="topnav">
+    <a href="index.html#chapters">章节目录</a>
+    <a href="viewer.html#/00/1">课件放映</a>
+    <a class="on" href="quiz.html" aria-current="page">章节自测</a>
+  </nav>
+  <a class="gh-link" href="https://github.com/kinghihido/materials-science-foundations" target="_blank" rel="noopener">GitHub<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+</header>
+
+<main class="quiz-main">
+  <section class="quiz-hero">
+    <div class="wrap quiz-hero-inner">
+      <div class="quiz-hero-copy">
+        <p class="kicker">Self-test · Chapters 00–03</p>
+        <h1>章节自测<br><span>50 题</span></h1>
+        <p class="lede">四个选项里挑一个。以概念辨析为主，混入少量选项长得很像的计算题——需要动笔，蒙不出来。交卷后自动批改，给出分数、正确答案和逐题解析。</p>
+        <div class="quiz-facts">
+          <div><b>50</b><span>道单选</span></div>
+          <div><b>42</b><span>概念辨析</span></div>
+          <div><b>8</b><span>计算题</span></div>
+          <div><b>100</b><span>满分</span></div>
+        </div>
+      </div>
+      <aside class="quiz-guide" aria-label="答题说明">
+        <p class="quiz-guide-title">答题说明</p>
+        <ol>
+          <li><i>01</i><div><b>先做再交</b><span>选中的答案会保存在本机，刷新不丢。</span></div></li>
+          <li><i>02</i><div><b>提交后批改</b><span>自动计分，标出对错、正确答案与解析。</span></div></li>
+          <li><i>03</i><div><b>回到课件</b><span>每题都附页码，可直接跳到对应幻灯片。</span></div></li>
+        </ol>
+      </aside>
+    </div>
+  </section>
+
+  <section class="quiz-report-wrap wrap" id="reportWrap" hidden>
+    <div id="quizReport"></div>
+  </section>
+
+  <section class="quiz-section wrap" id="quizSection">
+    <div class="quiz-layout">
+      <div class="quiz-list-col">
+        <div class="quiz-toolbar" id="quizToolbar">
+          <div class="qt-progress">
+            <div class="qt-progress-text">
+              <span><b id="answeredCount">0</b><em>/ 50 已答</em></span>
+              <span class="qt-timer" id="timer">00:00</span>
+            </div>
+            <div class="qt-bar" role="progressbar" aria-label="答题进度" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0" id="progressBar"><i id="progressFill"></i></div>
+          </div>
+          <div class="qt-actions">
+            <div class="qt-filter" id="filterGroup" hidden>
+              <button type="button" data-filter="all" class="on">全部</button>
+              <button type="button" data-filter="wrong">只看错题</button>
+            </div>
+            <button type="button" class="btn btn-primary qt-submit" id="submitBtn">提交答案</button>
+          </div>
+        </div>
+
+        <div id="quizList" class="quiz-list" aria-live="polite">
+          <p class="quiz-loading">正在载入题库…</p>
+        </div>
+
+        <div class="quiz-bottom-actions">
+          <button type="button" class="btn btn-primary" id="submitBtnBottom">提交答案</button>
+          <button type="button" class="btn" id="retryBtnBottom" hidden>重做本套</button>
+          <a class="btn" href="viewer.html#/00/1">返回课件</a>
+        </div>
+      </div>
+
+      <aside class="quiz-aside">
+        <div class="sheet-card">
+          <header class="sheet-head">
+            <div>
+              <p class="kicker">Answer Sheet</p>
+              <h2>答题卡</h2>
+            </div>
+            <span class="sheet-count" id="sheetCount">0/50</span>
+          </header>
+          <div class="sheet-grid" id="answerSheet" aria-label="答题卡"></div>
+          <div class="sheet-legend">
+            <span><i class="lg-done"></i>已答</span>
+            <span><i class="lg-todo"></i>未答</span>
+            <span id="lgResult" hidden><i class="lg-ok"></i>对 <i class="lg-no"></i>错</span>
+          </div>
+          <div class="sheet-score" id="sheetScore" hidden></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>课件版权归北京大学材料科学与工程学院及授课教师所有，本站仅作个人学习索引。</p>
+    <p class="footer-meta">材料科学基础（上）· 2026 秋 · 章节自测 50 题</p>
+  </div>
+</footer>
+
+<dialog class="quiz-dialog" id="quizDialog">
+  <div class="dialog-body">
+    <p class="kicker" id="dialogKicker">Confirm</p>
+    <h3 id="dialogTitle">确定提交吗？</h3>
+    <p id="dialogText"></p>
+  </div>
+  <div class="dialog-actions">
+    <button type="button" class="btn" id="dialogCancel">继续作答</button>
+    <button type="button" class="btn btn-primary" id="dialogConfirm">仍然提交</button>
+  </div>
+</dialog>
+
+<script src="assets/js/quiz.js"></script>
+</body>
+</html>
