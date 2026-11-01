@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>放映 · 材料科学基础</title>
+<meta name="description" content="材料科学基础课件逐页放映器">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="viewer-body">
+
+<header class="v-top">
+  <a class="v-back" href="./" title="返回章节目录">
+    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3m4.5-4.5L3 8l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>目录</span>
+  </a>
+  <nav class="v-chapters" id="chapterPills" aria-label="章节"></nav>
+  <div class="v-spacer"></div>
+  <button class="v-icon-btn" id="searchBtn" title="全文检索 (/)">
+    <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m10.6 10.6 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    <span>检索</span><kbd>/</kbd>
+  </button>
+  <button class="v-icon-btn" id="gridBtn" title="缩略图总览 (O)">
+    <svg viewBox="0 0 16 16" aria-hidden="true"><rect x="2.5" y="2.5" width="4.6" height="4.6" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="8.9" y="2.5" width="4.6" height="4.6" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="2.5" y="8.9" width="4.6" height="4.6" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="8.9" y="8.9" width="4.6" height="4.6" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+    <span>总览</span><kbd>O</kbd>
+  </button>
+  <button class="v-icon-btn" id="fsBtn" title="全屏 (F)">
+    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 2.6H2.6V6M10 2.6h3.4V6M6 13.4H2.6V10M10 13.4h3.4V10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>全屏</span><kbd>F</kbd>
+  </button>
+</header>
+
+<main class="v-stage" id="stage">
+  <button class="v-arrow prev" id="prevBtn" aria-label="上一页">
+    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 4 6.5 10l6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <figure class="slide-wrap" id="slideWrap">
+    <img id="slideImg" alt="课件页面" decoding="async">
+  </figure>
+  <button class="v-arrow next" id="nextBtn" aria-label="下一页">
+    <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7.5 4 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="v-scroll" id="scrollMode"></div>
+</main>
+
+<footer class="v-bottom">
+  <div class="v-progress" id="progress" title="点击跳转">
+    <div class="fill" id="progressFill"></div>
+  </div>
+  <div class="v-controls">
+    <span class="v-label" id="chapterLabel">第 00 章</span>
+    <span class="v-title" id="slideTitle"></span>
+    <div class="v-nav">
+      <button id="prevBtn2" aria-label="上一页">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 4 6.5 10l6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <span class="v-counter" id="counter">1 <em>/ 1</em></span>
+      <button id="nextBtn2" aria-label="下一页">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m7.5 4 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <div class="v-tools">
+      <button class="v-tool" id="modeBtn" title="切换单页 / 连续滚动 (C)">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 4h11M2.5 8h11M2.5 12h11" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <span id="modeLabel">连续</span>
+      </button>
+      <a class="v-tool" id="pdfLink" href="#" target="_blank" rel="noopener" title="下载本章原版 PDF">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2.5v7m0 0 3-3m-3 3-3-3M3 12.5h10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>PDF</span>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<div class="panel-backdrop" id="panelBackdrop"></div>
+<aside class="grid-panel" id="gridPanel" aria-label="缩略图总览">
+  <div class="panel-head">
+    <div>
+      <h3 id="panelTitle">缩略图总览</h3>
+      <span id="panelCount"></span>
+    </div>
+    <button class="panel-close" id="panelClose" aria-label="关闭">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3.5 3.5 9 9m0-9-9 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div class="panel-grid" id="panelGrid"></div>
+</aside>
+
+<div class="search-layer" id="searchLayer" role="dialog" aria-modal="true" aria-label="检索课件">
+  <div class="search-box">
+    <div class="search-head">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m10.6 10.6 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <input id="searchInput" type="search" placeholder="搜索课件文字，例如：布拉菲、倒易点阵、晶系" autocomplete="off" spellcheck="false">
+      <kbd>ESC</kbd>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+    <div class="search-foot">
+      <span><kbd>↑</kbd><kbd>↓</kbd> 选择</span>
+      <span><kbd>↵</kbd> 跳转</span>
+      <span id="searchCount" style="margin-left:auto"></span>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="assets/js/viewer.js"></script>
+</body>
+</html>

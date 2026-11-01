@@ -1,0 +1,48 @@
+{
+  "course": "材料科学基础",
+  "term": "2026 秋",
+  "total": 415,
+  "chapters": [
+    {
+      "id": "00",
+      "num": "00",
+      "title": "绪论",
+      "en": "Introduction",
+      "desc": "课程信息、材料分类、材料科学与工程四要素",
+      "count": 93,
+      "cover": "thumbs/00/0001.webp",
+      "pdf": "pdf/ch00.pdf"
+    },
+    {
+      "id": "01",
+      "num": "01",
+      "title": "晶体学",
+      "en": "Crystallography",
+      "desc": "点阵与晶胞、对称性、晶系、晶向晶面指数、倒易点阵、极射投影",
+      "count": 171,
+      "cover": "thumbs/01/0001.webp",
+      "pdf": "pdf/ch01.pdf"
+    },
+    {
+      "id": "02",
+      "num": "02",
+      "title": "晶体结构",
+      "en": "Crystal Structure",
+      "desc": "原子堆垛、半径、单质与化合物结构、固溶体、同素异构、准晶",
+      "count": 109,
+      "cover": "thumbs/02/0001.webp",
+      "pdf": "pdf/ch02.pdf"
+    },
+    {
+      "id": "03",
+      "num": "03",
+      "title": "半晶态与非晶态",
+      "en": "Semicrystalline & Amorphous",
+      "desc": "聚合物的半晶态、非晶态结构与转变",
+      "count": 42,
+      "cover": "thumbs/03/0001.webp",
+      "pdf": "pdf/ch03.pdf"
+    }
+  ],
+  "parts": 7
+}

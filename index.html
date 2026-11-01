@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>材料科学基础 · 课件放映室</title>
+<meta name="description" content="北京大学材料科学基础 2026 秋 第 00–03 章课件，415 页高清逐页放映，支持全文检索与缩略图总览。">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="home">
+<header class="topbar">
+  <a class="brand" href="./" aria-label="材料科学基础 课件放映室">
+    <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M24 5 42 14.5v19L24 43 6 33.5v-19L24 5Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M6 14.5 24 24l18-9.5M24 24v19" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".55"/>
+      <circle cx="24" cy="24" r="2.6" fill="currentColor"/>
+      <circle cx="6" cy="14.5" r="2" fill="currentColor" opacity=".8"/>
+      <circle cx="42" cy="14.5" r="2" fill="currentColor" opacity=".8"/>
+      <circle cx="24" cy="43" r="2" fill="currentColor" opacity=".8"/>
+    </svg>
+    <span class="brand-text"><b>材料科学基础</b><i>课件放映室</i></span>
+  </a>
+  <nav class="topnav">
+    <a href="#chapters">章节目录</a>
+    <a href="#shortcuts">快捷键</a>
+  </nav>
+  <a class="gh-link" href="https://github.com/kinghihido/materials-science-foundations" target="_blank" rel="noopener">GitHub<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="kicker">北京大学 · 材料科学与工程 · 2026 秋季学期</p>
+        <h1>材料科学基础<br><span>课件放映室</span></h1>
+        <p class="lede">第 00–03 章的全部课件，<b id="heroTotal">415</b> 页，逐页高清。键盘翻页、全文检索、缩略图总览——像放幻灯片一样，把课过一遍。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" id="resumeBtn" href="viewer.html#/00/1">开始放映
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 3.5v9l8-4.5-8-4.5Z" fill="currentColor"/></svg>
+          </a>
+          <a class="btn" href="#chapters">浏览章节目录</a>
+        </div>
+        <dl class="stats">
+          <div><dt>章节</dt><dd><b>4</b><span>章</span></dd></div>
+          <div><dt>课件</dt><dd><b id="statPages">415</b><span>页</span></dd></div>
+          <div><dt>原件</dt><dd><b id="statPdfs">7</b><span>份 PDF</span></dd></div>
+          <div><dt>版本</dt><dd><b>2026</b><span>秋</span></dd></div>
+        </dl>
+      </div>
+      <div class="hero-stack" aria-hidden="true">
+        <figure class="stack-card s3"><img src="slides/00/0001.webp" alt=""></figure>
+        <figure class="stack-card s2"><img src="slides/02/0001.webp" alt=""></figure>
+        <figure class="stack-card s1"><img src="slides/01/0001.webp" alt=""><figcaption>Crystallography · 01</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="chapters" id="chapters">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="kicker">Contents</p>
+          <h2>章节目录</h2>
+        </div>
+        <p class="section-note">四章，从点阵到非晶态。<br>点击任意章节开始放映。</p>
+      </div>
+      <div class="chapter-grid" id="chapterGrid"></div>
+    </div>
+  </section>
+
+  <section class="shortcuts" id="shortcuts">
+    <div class="wrap shortcuts-inner">
+      <div class="shortcuts-copy">
+        <p class="kicker">Screening Room</p>
+        <h2>放映室快捷键</h2>
+        <p>进度自动保存在本机。链接里的 <code>#/01/42</code> 可以直接指到某一页。</p>
+      </div>
+      <ul class="key-list">
+        <li><span><kbd>←</kbd><kbd>→</kbd></span><b>上一页 / 下一页</b></li>
+        <li><span><kbd>空格</kbd></span><b>下一页</b></li>
+        <li><span><kbd>/</kbd></span><b>全文检索课件</b></li>
+        <li><span><kbd>O</kbd></span><b>缩略图总览</b></li>
+        <li><span><kbd>C</kbd></span><b>连续滚动模式</b></li>
+        <li><span><kbd>F</kbd></span><b>全屏放映</b></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <p>课件版权归北京大学材料科学与工程学院及授课教师所有，本站仅作个人学习索引。</p>
+    <p class="footer-meta">材料科学基础（上）· 2026 秋 · <span id="footTotal">415</span> 页</p>
+  </div>
+</footer>
+
+<script src="assets/js/home.js"></script>
+</body>
+</html>
