@@ -172,6 +172,8 @@
       <button class="chip ${c.id === state.chId ? "on" : ""}" data-ch="${c.id}" style="--accent:${ACCENTS[c.id] || "#d8a657"}">
         <i>${c.num}</i>${c.title}
       </button>`).join("");
+    const on = pills.querySelector(".chip.on");
+    if (on) on.scrollIntoView({ block: "nearest", inline: "center" });
   }
 
   function updatePdf() {
