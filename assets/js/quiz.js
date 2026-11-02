@@ -1,7 +1,9 @@
 (() => {
   "use strict";
 
-  const KEY = "msf:quiz:v1";
+  const SET = new URLSearchParams(location.search).get("set") === "2" ? "2" : "1";
+  const DATA_URL = SET === "2" ? "data/quiz2.json" : "data/quiz.json";
+  const KEY = SET === "2" ? "msf:quiz:v2" : "msf:quiz:v1";
   const LETTERS = ["A", "B", "C", "D"];
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
@@ -11,6 +13,7 @@
     reportWrap: $("#reportWrap"),
     report: $("#quizReport"),
     answered: $("#answeredCount"),
+    answeredTotal: $("#answeredTotal"),
     timer: $("#timer"),
     fill: $("#progressFill"),
     bar: $("#progressBar"),
@@ -22,6 +25,16 @@
     submitBottom: $("#submitBtnBottom"),
     retryBottom: $("#retryBtnBottom"),
     filterGroup: $("#filterGroup"),
+    heroKicker: $("#heroKicker"),
+    heroTitle: $("#heroTitle"),
+    heroCount: $("#heroCount"),
+    heroLede: $("#heroLede"),
+    factTotal: $("#factTotal"),
+    factConcept: $("#factConcept"),
+    factCalc: $("#factCalc"),
+    factScore: $("#factScore"),
+    quizSets: $("#quizSets"),
+    footerCount: $("#footerCount"),
     dialog: $("#quizDialog"),
     dialogKicker: $("#dialogKicker"),
     dialogTitle: $("#dialogTitle"),
@@ -529,22 +542,50 @@
     }
   }
 
+  function applyMetaChrome() {
+    const total = questions.length;
+    const concept = questions.filter(q => q.type === "concept").length;
+    const calc = total - concept;
+    const setLabel = meta.setLabel || "章节自测";
+
+    document.title = `${meta.heroTitle || "章节自测"} · 材料科学基础`;
+    el.heroKicker.textContent = meta.kicker || "Self-test · Chapters 00–03";
+    el.heroTitle.textContent = meta.heroTitle || "章节自测";
+    el.heroCount.textContent = `${total} 题`;
+    if (meta.lede) el.heroLede.textContent = meta.lede;
+    el.factTotal.textContent = String(total);
+    el.factConcept.textContent = String(concept);
+    el.factCalc.textContent = String(calc);
+    el.factScore.textContent = String(total * meta.perQuestion);
+    el.answeredTotal.textContent = String(total);
+    el.bar.setAttribute("aria-valuemax", String(total));
+    el.footerCount.textContent = `材料科学基础（上）· 2026 秋 · ${setLabel} ${total} 题`;
+
+    $$("a[data-set]", el.quizSets).forEach(a => {
+      const on = a.dataset.set === SET;
+      a.classList.toggle("on", on);
+      if (on) a.setAttribute("aria-current", "page");
+      else a.removeAttribute("aria-current");
+    });
+  }
+
   async function init() {
     try {
-      const res = await fetch("data/quiz.json", { cache: "no-cache" });
+      const res = await fetch(DATA_URL, { cache: "no-cache" });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = await res.json();
       meta = data.meta;
       questions = Array.isArray(data.questions) ? data.questions : [];
       if (!meta || !questions.length) throw new Error("empty quiz");
       byId = new Map(questions.map(q => [q.id, q]));
+      applyMetaChrome();
       restore();
       render();
       bind();
       applyRestoredState();
       typeset();
     } catch (err) {
-      el.list.innerHTML = `<div class="quiz-error"><b>题库没有载入成功</b><p>请确认 <code>data/quiz.json</code> 存在，并通过 HTTP 服务打开本页。</p></div>`;
+      el.list.innerHTML = `<div class="quiz-error"><b>题库没有载入成功</b><p>请确认 <code>${DATA_URL}</code> 存在，并通过 HTTP 服务打开本页。</p></div>`;
       console.error(err);
     }
   }

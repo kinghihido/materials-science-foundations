@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>章节自测 · 材料科学基础</title>
-<meta name="description" content="材料科学基础第 00–03 章 50 道单选题，概念辨析为主，含少量近似选项计算题；提交后自动批改并给出解析。">
+<meta name="description" content="材料科学基础第 00–03 章两套共 100 道单选题：基础巩固与薄弱点强化，覆盖六方晶体、四轴指数、倒易点阵、极射投影、玻璃态与晶体填隙；提交后自动批改并给出解析。">
 <meta property="og:title" content="章节自测 · 材料科学基础">
-<meta property="og:description" content="第 00–03 章 50 道单选题，提交后自动批改并给出解析。">
+<meta property="og:description" content="第 00–03 章两套共 100 道单选题，含六方/四轴指数、倒易点阵、极射投影与玻璃态强化题；提交后自动批改并给出解析。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://kinghihido.github.io/materials-science-foundations/quiz.html">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -45,15 +45,19 @@ window.MathJax = {
   <section class="quiz-hero">
     <div class="wrap quiz-hero-inner">
       <div class="quiz-hero-copy">
-        <p class="kicker">Self-test · Chapters 00–03</p>
-        <h1>章节自测<br><span>50 题</span></h1>
-        <p class="lede">四个选项里挑一个。以概念辨析为主，混入少量选项长得很像的计算题——需要动笔，蒙不出来。交卷后自动批改，给出分数、正确答案和逐题解析。</p>
+        <p class="kicker" id="heroKicker">Self-test · Chapters 00–03</p>
+        <h1><span class="hero-title" id="heroTitle">章节自测</span><br><span id="heroCount">50 题</span></h1>
+        <p class="lede" id="heroLede">四个选项里挑一个。以概念辨析为主，混入少量选项长得很像的计算题——需要动笔，蒙不出来。交卷后自动批改，给出分数、正确答案和逐题解析。</p>
         <div class="quiz-facts">
-          <div><b>50</b><span>道单选</span></div>
-          <div><b>42</b><span>概念辨析</span></div>
-          <div><b>8</b><span>计算题</span></div>
-          <div><b>100</b><span>满分</span></div>
+          <div><b id="factTotal">50</b><span>道单选</span></div>
+          <div><b id="factConcept">42</b><span>概念辨析</span></div>
+          <div><b id="factCalc">8</b><span>计算题</span></div>
+          <div><b id="factScore">100</b><span>满分</span></div>
         </div>
+        <nav class="quiz-sets" id="quizSets" aria-label="选择题库">
+          <a href="quiz.html" data-set="1"><b>第一套 · 基础巩固</b><span>50 题 · 第 00–03 章概念与计算</span></a>
+          <a href="quiz.html?set=2" data-set="2"><b>第二套 · 薄弱点强化</b><span>50 题 · 六方 / 四轴 / 倒易 / 投影 / 玻璃</span></a>
+        </nav>
       </div>
       <aside class="quiz-guide" aria-label="答题说明">
         <p class="quiz-guide-title">答题说明</p>
@@ -76,7 +80,7 @@ window.MathJax = {
         <div class="quiz-toolbar" id="quizToolbar">
           <div class="qt-progress">
             <div class="qt-progress-text">
-              <span><b id="answeredCount">0</b><em>/ 50 已答</em></span>
+              <span><b id="answeredCount">0</b><em>/ <span id="answeredTotal">50</span> 已答</em></span>
               <span class="qt-timer" id="timer">00:00</span>
             </div>
             <div class="qt-bar" role="progressbar" aria-label="答题进度" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0" id="progressBar"><i id="progressFill"></i></div>
@@ -126,7 +130,7 @@ window.MathJax = {
 <footer class="site-footer">
   <div class="wrap footer-inner">
     <p>课件版权归北京大学材料科学与工程学院及授课教师所有，本站仅作个人学习索引。</p>
-    <p class="footer-meta">材料科学基础（上）· 2026 秋 · 章节自测 50 题</p>
+    <p class="footer-meta" id="footerCount">材料科学基础（上）· 2026 秋 · 章节自测 50 题</p>
   </div>
 </footer>
 
